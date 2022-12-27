@@ -1,0 +1,67 @@
+﻿@model blogHaber.Models.Haber
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Baslik</h2>
+<hr />
+<p>
+    <span class="glyphicon glyphicon-time"></span>
+    @Model.EklenmeTarihi
+</p>
+<hr />
+<img class="img-responsive" src="~/Image/@Model.Resim" alt="" />
+<hr />
+<blockquote>
+    <p>@Model.Aciklama</p>
+</blockquote>
+
+
+    <p>
+        @Html.Raw( Model.Giris)
+    </p>
+    <hr />
+  
+        <p>@Html.Raw( Model.Govde)</p>
+    
+    <hr />
+    @{Html.RenderAction("GaleriPartial", "Haber");}  <!-- ikincisi hangi kontrollerin içinde olduğu-->
+
+
+
+
+    @section SagKolon
+    {
+
+
+
+        <!--<div class="well"> arama partialini yazmadan önceki kodlar
+            <h4>Arama</h4>
+            <div class="input-group">
+                <input type="text" class="form-control" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+
+            </div>
+
+        </div>-->
+
+        @Html.Partial("Search")
+        @{ Html.RenderAction("KategoriListesi", "Category");}<!-- ikincisi hangi kontrollerin içinde olduğu-->
+
+
+
+    }
+
+
+
+    <!--
+        <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+        -->
